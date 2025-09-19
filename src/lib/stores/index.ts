@@ -1,5 +1,5 @@
 import { APP_NAME } from '$lib/constants';
-import { PUBLIC_DARK_COLOR } from '$env/static/public';
+import { PUBLIC_SLIDE_COLOR } from '$env/static/public';
 
 import { type Writable, writable } from 'svelte/store';
 import type { ModelConfig } from '$lib/apis';
@@ -92,7 +92,7 @@ export const playingNotificationSound = writable(false);
 
 import { env } from '$env/dynamic/public';
 
-export const darkColor =  writable(env.PUBLIC_DARK_COLOR);
+export const darkColor =  writable(env.PUBLIC_SLIDE_COLOR);
 export const mainColor =  writable(env.PUBLIC_MAIN_COLOR);
 
 export type Model = OpenAIModel | OllamaModel;

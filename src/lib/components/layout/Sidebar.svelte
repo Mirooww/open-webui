@@ -31,7 +31,7 @@
 
 	console.log(`couleur = ${$darkColor}`)
 
-	import { PUBLIC_DARK_COLOR, PUBLIC_MAIN_COLOR } from '$env/static/public';
+	import { PUBLIC_SLIDE_COLOR, PUBLIC_MAIN_COLOR } from '$env/static/public';
 
 	import { onMount, getContext, tick, onDestroy } from 'svelte';
 

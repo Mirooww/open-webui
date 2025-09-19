@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { v4 as uuidv4 } from 'uuid';
 	import { toast } from 'svelte-sonner';
-	import { PUBLIC_DARK_COLOR, PUBLIC_MAIN_COLOR } from '$env/static/public';
+	import { PUBLIC_SLIDE_COLOR, PUBLIC_MAIN_COLOR } from '$env/static/public';
 
 	import mermaid from 'mermaid';
 	import { PaneGroup, Pane, PaneResizer } from 'paneforge';

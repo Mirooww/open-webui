@@ -4,8 +4,8 @@ services:
       context: .
       args:
         OLLAMA_BASE_URL: '/ollama'
-        PUBLIC_DARK_COLOR: "#1B2535"
-        PUBLIC_MAIN_COLOR: "#182C4B"
+        PUBLIC_SLIDE_COLOR: "#1E1E1E"
+        PUBLIC_MAIN_COLOR: "#1B2535"
       dockerfile: Dockerfile
     container_name: open-webui
     volumes:
@@ -15,8 +15,8 @@ services:
     environment:
       - 'OLLAMA_BASE_URL=http://ollama:11434'
       - 'WEBUI_NAME=Infogene'
-      - 'PUBLIC_DARK_COLOR=#1B2535'
-      - 'PUBLIC_MAIN_COLOR=#182C4B'
+      - 'PUBLIC_SLIDE_COLOR=#1E1E1E'
+      - 'PUBLIC_MAIN_COLOR=#1B2535'
     extra_hosts:
       - host.docker.internal:host-gateway
     restart: unless-stopped
