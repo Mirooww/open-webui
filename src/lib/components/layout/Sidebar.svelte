@@ -25,8 +25,14 @@
 		isApp,
 		models,
 		selectedFolder,
-		WEBUI_NAME
+		WEBUI_NAME,
+		darkColor
 	} from '$lib/stores';
+
+	console.log(`couleur = ${$darkColor}`)
+
+	import { PUBLIC_DARK_COLOR, PUBLIC_MAIN_COLOR } from '$env/static/public';
+
 	import { onMount, getContext, tick, onDestroy } from 'svelte';
 
 	const i18n = getContext('i18n');
@@ -513,7 +519,7 @@
 
 {#if !$mobile && !$showSidebar}
 	<div
-		class=" py-2 px-1.5 flex flex-col justify-between text-black dark:text-white hover:bg-gray-50 dark:hover:bg-gray-950 h-full border-e border-gray-50 dark:border-gray-850 z-10 transition-all"
+		class=" py-2 px-1.5 flex flex-col justify-between text-black dark:text-white hover:bg-gray-50 dark:hover:bg-gray-950 h-full border-e border-gray-50 dark:border-gray-850 z-10 transition-all "
 		id="sidebar"
 	>
 		<button
@@ -693,8 +699,11 @@
 			? 'bg-gray-50 dark:bg-gray-950 z-50'
 			: ' bg-transparent z-0 '} {$isApp
 			? `ml-[4.5rem] md:ml-0 `
-			: ' transition-all duration-300 '} shrink-0 text-gray-900 dark:text-gray-200 text-sm fixed top-0 left-0 overflow-x-hidden
-        "
+			: ' transition-all duration-300 '} shrink-0 text-gray-900 dark:text-gray-200 text-sm fixed top-0 left-0 overflow-x-hidden"
+		style="--sidebar-bg: {$darkColor}; background-color: var(--sidebar-bg);"
+
+
+
 		transition:slide={{ duration: 250, axis: 'x' }}
 		data-state={$showSidebar}
 	>
@@ -705,26 +714,16 @@
 		>
 			<div
 				class="sidebar px-1.5 pt-2 pb-1.5 flex justify-between space-x-1 text-gray-600 dark:text-gray-400 sticky top-0 z-10 bg-gray-50 dark:bg-gray-950"
+				style="--sidebar-bg: {$darkColor}; background-color: var(--sidebar-bg);"
 			>
-				<a
-					class="flex items-center rounded-lg p-1.5 h-full justify-center hover:bg-gray-100 dark:hover:bg-gray-850 transition no-drag-region"
-					href="/"
+				<img
+					crossorigin="anonymous"
+					src="{WEBUI_BASE_URL}/static/{$WEBUI_NAME}.png"
+					class="sidebar-logo w-[70%] h-auto rounded-lg p-1.5 hover:bg-gray-100 dark:hover:bg-gray-850 transition no-drag-region cursor-pointer"
+					alt="{$WEBUI_NAME}"
 					draggable="false"
 					on:click={newChatHandler}
-				>
-					<img
-						crossorigin="anonymous"
-						src="{WEBUI_BASE_URL}/static/favicon.png"
-						class="sidebar-new-chat-icon size-6 rounded-full"
-						alt=""
-					/>
-				</a>
-
-				<a href="/" class="flex flex-1 px-1.5" on:click={newChatHandler}>
-					<div class=" self-center font-medium text-gray-850 dark:text-white font-primary">
-						{$WEBUI_NAME}
-					</div>
-				</a>
+				/>
 				<Tooltip
 					content={$showSidebar ? $i18n.t('Close Sidebar') : $i18n.t('Open Sidebar')}
 					placement="bottom"

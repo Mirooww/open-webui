@@ -1,6 +1,7 @@
 # syntax=docker/dockerfile:1
 # Initialize device type args
 # use build args in the docker build command with --build-arg="BUILDARG=true"
+
 ARG USE_CUDA=false
 ARG USE_OLLAMA=false
 ARG USE_SLIM=false
@@ -26,6 +27,9 @@ ARG GID=0
 FROM --platform=$BUILDPLATFORM node:22-alpine3.20 AS build
 ARG BUILD_HASH
 
+######## A CHANGER SELON LA SOCIETE ########
+ENV PUBLIC_MAIN_COLOR="#182C4B"
+ENV PUBLIC_DARK_COLOR="#1B2535"
 # Set Node.js options (heap limit Allocation failed - JavaScript heap out of memory)
 # ENV NODE_OPTIONS="--max-old-space-size=4096"
 
@@ -39,8 +43,7 @@ RUN npm ci --force
 
 COPY . .
 ENV APP_BUILD_HASH=${BUILD_HASH}
-RUN npm run build
-
+RUN npm run build --verbose 2>&1 || exit 1
 ######## WebUI backend ########
 FROM python:3.11-slim-bookworm AS base
 

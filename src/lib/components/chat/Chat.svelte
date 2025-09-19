@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { v4 as uuidv4 } from 'uuid';
 	import { toast } from 'svelte-sonner';
+	import { PUBLIC_DARK_COLOR, PUBLIC_MAIN_COLOR } from '$env/static/public';
+
 	import mermaid from 'mermaid';
 	import { PaneGroup, Pane, PaneResizer } from 'paneforge';
 
@@ -38,7 +40,7 @@
 		tools,
 		toolServers,
 		selectedFolder,
-		pinnedChats
+		pinnedChats, mainColor
 	} from '$lib/stores';
 	import {
 		convertMessagesToHistory,
@@ -2240,7 +2242,10 @@
 			{/if}
 
 			<PaneGroup direction="horizontal" class="w-full h-full">
-				<Pane defaultSize={50} class="h-full flex relative max-w-full flex-col">
+				<Pane
+					defaultSize={50}
+					class="h-full flex relative max-w-full flex-col"
+				>
 					<Navbar
 						bind:this={navbarElement}
 						chat={{
@@ -2395,7 +2400,9 @@
 								</div>
 							</div>
 						{:else}
-							<div class="flex items-center h-full">
+							<div class="flex items-center h-full"
+									 style="--sidebar-bg: {$mainColor}; background-color: var(--sidebar-bg);"
+							>
 								<Placeholder
 									{history}
 									{selectedModels}

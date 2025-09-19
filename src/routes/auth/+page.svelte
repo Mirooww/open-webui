@@ -20,6 +20,10 @@
 	import OnBoarding from '$lib/components/OnBoarding.svelte';
 	import SensitiveInput from '$lib/components/common/SensitiveInput.svelte';
 	import { redirect } from '@sveltejs/kit';
+	import { Pane } from 'paneforge';
+
+	import { colors } from '$lib/colors.js';
+
 
 	const i18n = getContext('i18n');
 

@@ -13,7 +13,8 @@
 		showControls,
 		showSidebar,
 		temporaryChatEnabled,
-		user
+		user,
+		darkColor
 	} from '$lib/stores';
 
 	import { slide } from 'svelte/transition';
@@ -73,7 +74,11 @@
 <nav class="sticky top-0 z-30 w-full py-1 -mb-8 flex flex-col items-center drag-region">
 	<div class="flex items-center w-full pl-1.5 pr-1">
 		<div
-			class=" bg-linear-to-b via-50% from-white via-white to-transparent dark:from-gray-900 dark:via-gray-900 dark:to-transparent pointer-events-none absolute inset-0 -bottom-7 z-[-1]"
+			class="pointer-events-none absolute inset-0 -bottom-7 z-[-1]"
+			style="
+			--sidebar-bg: {$darkColor};
+			background: linear-gradient(to bottom, var(--sidebar-bg) 0%, var(--sidebar-bg) 50%, transparent 100%);
+		"
 		></div>
 
 		<div class=" flex max-w-full w-full mx-auto px-1.5 md:px-2 pt-0.5 bg-transparent">

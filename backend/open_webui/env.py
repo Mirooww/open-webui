@@ -111,8 +111,8 @@ for source in log_sources:
 log.setLevel(SRC_LOG_LEVELS["CONFIG"])
 
 WEBUI_NAME = os.environ.get("WEBUI_NAME", "Open WebUI")
-if WEBUI_NAME != "Open WebUI":
-    WEBUI_NAME += " (Open WebUI)"
+#if WEBUI_NAME != "Open WebUI":
+#    WEBUI_NAME += " (Open WebUI)"
 
 WEBUI_FAVICON_URL = "https://openwebui.com/favicon.png"
 
@@ -803,3 +803,15 @@ PIP_PACKAGE_INDEX_OPTIONS = os.getenv("PIP_PACKAGE_INDEX_OPTIONS", "").split()
 ####################################
 
 EXTERNAL_PWA_MANIFEST_URL = os.environ.get("EXTERNAL_PWA_MANIFEST_URL")
+
+
+
+
+
+
+####################################
+# PERSONNAL INTERFACE - JL
+####################################
+
+
+DARK_COLOR = os.environ.get("DARK_COLOR")

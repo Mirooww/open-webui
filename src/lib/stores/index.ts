@@ -1,4 +1,6 @@
 import { APP_NAME } from '$lib/constants';
+import { PUBLIC_DARK_COLOR } from '$env/static/public';
+
 import { type Writable, writable } from 'svelte/store';
 import type { ModelConfig } from '$lib/apis';
 import type { Banner } from '$lib/types';
@@ -87,6 +89,11 @@ export const currentChatPage = writable(1);
 
 export const isLastActiveTab = writable(true);
 export const playingNotificationSound = writable(false);
+
+import { env } from '$env/dynamic/public';
+
+export const darkColor =  writable(env.PUBLIC_DARK_COLOR);
+export const mainColor =  writable(env.PUBLIC_MAIN_COLOR);
 
 export type Model = OpenAIModel | OllamaModel;
 
